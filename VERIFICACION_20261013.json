@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-13",
+  "scope": "CEREBRO sintético",
+  "saving": {
+    "status": 200,
+    "mode": "rules-fallback",
+    "text": "El simulador responde con cifras verificadas: Diferencia estimada: 5.15 € en este día sintético. Coste ajustado: 4.06 € → -1.09 €. No incluye impuestos, término fijo ni degradación.",
+    "safety": {
+      "status": "simulation-only",
+      "reasons": [],
+      "realExecutionAllowed": false
+    }
+  },
+  "pool": {
+    "status": 200,
+    "mode": "ollama",
+    "text": "Explicación IA (orientativa): Los horarios de piscina se ajustan para optimizar la utilización del agua y minimizar costos energéticos, considerando factores como la disponibilidad del sol, la capacidad de almacenamiento y la eficiencia de la red eléctrica.\n\nDatos y reglas verificados: Piscina desde las 10:00 durante 3 h, con 1.0 kW. Se mantiene el mismo tiempo de filtración que en la referencia.",
+    "safety": {
+      "status": "simulation-only",
+      "reasons": [],
+      "realExecutionAllowed": false
+    }
+  },
+  "unsafe": {
+    "status": 200,
+    "mode": "rules",
+    "text": "CEREBRO solo simula y recomienda. No ejecuta órdenes sobre equipos. La reserva y los límites de seguridad no se pueden omitir por una petición al asistente.",
+    "safety": {
+      "status": "simulation-only",
+      "reasons": [],
+      "realExecutionAllowed": false
+    }
+  },
+  "foreignOrigin": 403
+}
