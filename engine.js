@@ -24,9 +24,10 @@ export function optimize(config){const c=validate({...defaults,...config});const
  const end1=22-Math.ceil(c.ev1/3.6),end2=22-Math.ceil(c.ev2/3.6);let checked=0;
  for(let a=8;a<=end1;a++)for(let b=8;b<=end2;b++)for(let p=9;p<=18-c.poolHours;p++){
   const r=simulate(c,{ev1:a,ev2:b,pool:p});checked++;
-  // Grid contract is a preference in this demo; violations are explicitly reported.
+  // Feasible schedules take priority over price; infeasible results remain diagnostic.
   const score=x=>x.cost+Math.max(0,x.peak-c.gridLimit)*2+x.unmet*100;
-  if(score(r)<score(best)-1e-8)best=r;
+  const feasible=x=>x.peak<=c.gridLimit+1e-8&&x.unmet<=1e-8;
+  if((feasible(r)&&!feasible(best))||(feasible(r)===feasible(best)&&(feasible(r)?r.cost<best.cost-1e-8:score(r)<score(best)-1e-8)))best=r;
  }
  return {config:c,baseline,optimized:best,saving:baseline.cost-best.cost,checked};
 }
@@ -42,6 +43,6 @@ export function answer(question,r){const q=question.toLocaleLowerCase('es'),o=r.
  if(/piscina|depura|filtra/.test(q))return recommendations(r)[1].text;
  if(/bater|reserva/.test(q))return recommendations(r)[2].text;
  if(/ahorr|cost|precio|factura/.test(q))return recommendations(r)[3].text;
- if(/por qué|porque|cómo|optim/.test(q))return `Comparo ${r.checked} combinaciones de horarios manteniendo la demanda de ambos BMW y las horas de piscina. Simulo el balance energético cada hora y minimizo coste ajustado, con penalización por superar la potencia orientativa. Es búsqueda discreta con reglas, no un modelo generativo ni un óptimo global de toda la vivienda.`;
+ if(/por qué|porque|cómo|optim/.test(q))return `Comparo ${r.checked} combinaciones de horarios manteniendo la demanda de ambos BMW y las horas de piscina. Simulo el balance energético cada hora y priorizo los horarios que respetan la potencia configurada y después minimizo su coste ajustado. Si ninguno cumple, muestro un resultado bloqueado para revisar la demanda. Es búsqueda discreta con reglas, no un modelo generativo ni un óptimo global de toda la vivienda.`;
  return 'Puedo explicar el escenario calculado: pregunta por BMW, piscina, batería, ahorro o cómo se optimiza. Este asistente local usa reglas y cifras del simulador; no está conectado a un modelo generativo.';
 }

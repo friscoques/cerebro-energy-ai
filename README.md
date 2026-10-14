@@ -21,6 +21,6 @@ En este repositorio los módulos están en la raíz para servir la demo estátic
 ## Verificación y límites
 13 pruebas PASS el 13/10/2026. VERIFICACION_20261013.json registra IA real, sustitución de cifras del modelo por evidencia económica, rechazo de órdenes y rechazo de origen externo. Las explicaciones IA pueden ser imprecisas; cifras y seguridad se calculan fuera del modelo.
 
-La búsqueda discreta penaliza picos de red; un plan fuera del límite queda bloqueado para simulación. No garantiza un óptimo global. Ahorros por día sintético, sin impuestos, término fijo ni degradación. Costes negativos son créditos teóricos; no facturas reales.
+La búsqueda discreta prioriza los horarios que cumplen el límite de red y después su coste; si no existe un horario viable, presenta un plan bloqueado para revisión. No garantiza un óptimo global. Ahorros por día sintético, sin impuestos, término fijo ni degradación. Costes negativos son créditos teóricos; no facturas reales.
 
 El desarrollo doméstico FARO Energy AI es separado. No contiene datos domésticos ni realiza transferencias automáticas.

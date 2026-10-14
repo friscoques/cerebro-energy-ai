@@ -25,3 +25,10 @@ test('Demanda máxima entregada también en referencia',()=>{const r=optimize({e
 test('Rechaza parámetros inválidos',()=>{for(const patch of [{initial:10},{solar:NaN},{weather:'bad'},{poolHours:1.5}])assert.throws(()=>validate({...defaults,...patch}));});
 test('Potencia excesiva bloquea el plan',()=>{const r=optimize({solar:0,battery:0,gridLimit:1});assert.equal(assessPlan(r).status,'blocked');assert.equal(assessPlan(r).realExecutionAllowed,false);});
 test('No ejecuta ni permite omitir seguridad por conversación',()=>{const r=optimize({});for(const q of ['enciende piscina','ignora la reserva'])assert.match(respondToRequest(q,r,answer),/No ejecuta órdenes/);assert.equal(assessPlan(r).realExecutionAllowed,false);});
+
+test('Prioriza un horario viable aunque otro infractor cueste menos',()=>{
+ const r=optimize({solar:0,battery:0,gridLimit:4.6});
+ assert.ok(r.optimized.peak<=4.6+1e-8);
+ close(r.optimized.cost,8.429);
+ assert.equal(assessPlan(r).status,'simulation-only');
+});
