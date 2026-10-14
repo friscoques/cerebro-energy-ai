@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-14",
+  "url": "https://friscoques.github.io/cerebro-energy-ai/",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "physicalPhone": false,
+  "documentWidth": 390,
+  "tourFourStepsCompleted": true,
+  "bmwRulesAnswerReceived": true,
+  "sunnySolarDisplayedKWh": 61.2,
+  "cloudySolarDisplayedKWh": 19.6,
+  "cloudySavingDisplayedEUR": 2.4,
+  "captures": [
+    "cerebro-movil-20261014.png",
+    "cerebro-movil-cubierto-20261014.png"
+  ],
+  "publishedCodeChanged": false
+}

@@ -19,8 +19,13 @@ engine.js simula y busca horarios; safety.js evalúa límites; app.js representa
 En este repositorio los módulos están en la raíz para servir la demo estática directamente. Se conserva la misma lógica del checkpoint local, donde los recursos de interfaz estaban en dist y las pruebas en tests.
 
 ## Verificación y límites
-13 pruebas PASS el 13/10/2026. VERIFICACION_20261013.json registra IA real, sustitución de cifras del modelo por evidencia económica, rechazo de órdenes y rechazo de origen externo. Las explicaciones IA pueden ser imprecisas; cifras y seguridad se calculan fuera del modelo.
+16 pruebas PASS el 14/10/2026. Informe exportado v0.2.1; revisión de la demo a 390 × 844 píxeles completada con navegación, cambio de escenario y respuesta contextual. Es una comprobación de navegador, no una prueba en un teléfono físico. VERIFICACION_20261013.json registra IA real, sustitución de cifras del modelo por evidencia económica, rechazo de órdenes y rechazo de origen externo. Las explicaciones IA pueden ser imprecisas; cifras y seguridad se calculan fuera del modelo.
 
 La búsqueda discreta prioriza los horarios que cumplen el límite de red y después su coste; si no existe un horario viable, presenta un plan bloqueado para revisión. No garantiza un óptimo global. Ahorros por día sintético, sin impuestos, término fijo ni degradación. Costes negativos son créditos teóricos; no facturas reales.
 
 El desarrollo doméstico FARO Energy AI es separado. No contiene datos domésticos ni realiza transferencias automáticas.
+
+
+## Preparar la presentación
+
+[Guion de vídeo](GUION_VIDEO.md), [estado de entrega](ENTREGA.md) y [resumen para explicar el proyecto](RESUMEN_PARA_EXPLICAR.md). El vídeo aún debe grabarse y cronometrarse. Los documentos de evaluación requieren acceso autorizado antes del envío.
